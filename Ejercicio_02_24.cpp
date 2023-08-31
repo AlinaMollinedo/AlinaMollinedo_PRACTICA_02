@@ -8,7 +8,7 @@
 
 // Número de ejericio: 24
 
-// Problema planteado: Leer una cadena en mayúsculas y cámbielas en mayúsculas
+// Problema planteado: Leer una cadena en mayúsculas y cámbielas en minúscula.
 
 #include <iostream>
 #include <string>
@@ -17,13 +17,14 @@ using namespace std;
 string cadena;
 
 int main(){
-    cout << "Ingrese una cadena de caracteres: ";
+    cout << "Ingrese una cadena de caracteres en mayusculas: ";
     getline(cin, cadena);
 
     int len = sizeof(cadena);
 
     for(int i = 0; i < len; i++){
-        cadena[i] = toupper(cadena[i]);
+        cadena[i] = tolower(cadena[i]);
     }
     cout << endl << cadena << endl;
+    return 0;
 }

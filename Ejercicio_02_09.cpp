@@ -4,7 +4,7 @@
 
 // Fecha creación: 26/08/2023
 
-// Fecha modificación: 26/08/2023
+// Fecha modificación: 31/08/2023
 
 // Número de ejericio: 9
 
@@ -19,7 +19,7 @@
 
 using namespace std;
 int n, grade, hgrade = -1, lgrade = 101;
-double suma = 0, average;
+double suma = 0;
 string name, major, hname, lname;
 
 int main(){
@@ -57,12 +57,42 @@ int main(){
             lgrade = grades[i];
         }
     }
+    int pos, c = 0, sumGrades[n] = {}, numMajs[n] = {};
+    string majs[n] = {};
+
+    for(int i = 0; i < n; i++){
+        bool flag = false;
+        for(int j = 0; j < n; j++){
+            if(majors[i] == majs[j]){
+                flag =  true;
+                pos = j;
+                break;
+            }
+        }
+        if(flag){
+            numMajs[pos] += 1;
+            sumGrades[pos] += grades[i]; 
+        }
+        else{
+            majs[c] = majors[i];
+            numMajs[c] += 1;
+            sumGrades[c] += grades[i];
+            c++;
+        }
+    }
+
     cout << "\nEl estudiante con la nota mas alta es: " << hname << endl;
     cout << "El estudiante con la nota mas baja es: " << lname << endl;
 
-    average = suma / n;
+    int average = suma / n, averages[c];
 
+    cout << "Carreras que tuvieron un desempenhio mayor con relacion al promedio del curso:" << endl;
 
-
+    for(int i = 0; i < c; i++){
+        averages[i] = sumGrades[i] / numMajs[i];
+        if(averages[i] > average){
+            cout << "- " << majs[i] << endl;
+        }
+    }
     return 0;
 }

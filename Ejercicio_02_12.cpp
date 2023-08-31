@@ -4,7 +4,7 @@
 
 // Fecha creación: 29/08/2023
 
-// Fecha modificación: 29/08/2023
+// Fecha modificación: 30/08/2023
 
 // Número de ejericio: 12
 
@@ -25,8 +25,8 @@
 #include <iomanip>
 
 using namespace std;
-string minerals[] = {"SN", "SB", "AU", "PT", "AG", "CU"}, mineral;
-double prod[] = {998, 876.5, 786.67, 636.143, 135.567, 109.412};
+string minerals[] = {"AU","SB", "AG", "SN", "CU", "PT"}, mineral;
+double prod[] = {786.67, 876.5, 135.567, 998, 109.412, 636.143};
 
 int main(){
     cout << "Ingrese el nombre del mineral: ";
@@ -37,6 +37,31 @@ int main(){
         if(minerals[i] == mineral){
             cout << "\nProduccion de " << minerals[i] << " es de " << fixed << setprecision(3) << prod[i] << endl;
         }
+    }
+
+    int pos;
+
+    for(int i = 0; i < 6; i++){ // Realiza ordenación por selección 
+        int highest = -1;
+        for(int j = i; j < 6; j++){
+            if(prod[j] > highest){
+                pos = j;
+                highest = prod[j];
+            }
+        }
+        // Cambia los valores de una posición a otra
+        int temp1 = prod[i];
+        prod[i] = highest;
+        prod[pos] = temp1;
+
+        string temp2 = minerals[i];
+        minerals[i] = minerals[pos];
+        minerals[pos] = temp2;
+    }
+
+    cout << "\nMineral\tProduccion" << endl;
+    for(int i = 0; i < 6; i++){
+        cout << minerals[i] << "\t" << prod[i] << endl;
     }
 
     return 0;

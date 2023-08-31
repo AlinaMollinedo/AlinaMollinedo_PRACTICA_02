@@ -44,5 +44,5 @@ int main(){
     cout << "\n\nEl numero mayor es: " << mayor << endl;
     cout << "El numero menor es: " << menor << endl;
     cout << "El promedio es: " << suma / N << endl;
-
+    return 0;
 }
